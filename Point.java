@@ -30,7 +30,7 @@ public class Point{
       }
 
     public boolean equals(Point other) {
-        return(x == other.x && y == other.y);
+        return(other != null && x == other.x && y == other.y);
     }
 
     public static void main(String[] args) {
