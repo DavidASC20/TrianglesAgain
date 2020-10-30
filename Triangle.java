@@ -34,24 +34,49 @@ public class Triangle{
         return Math.sqrt(semiperimeter * realSide1 * realSide2 * realSide3);
     }
 
-    public String classify(){
-        double side1 = v1.distanceTo(v2);
-        double side2 = v2.distanceTo(v3);
-        double side3 = v3.distanceTo(v1);
+    // public String classify(){
+    //     double side1 = v1.distanceTo(v2);
+    //     double side2 = v2.distanceTo(v3);
+    //     double side3 = v3.distanceTo(v1);
 
-        double rounded1 = Math.floor(side1 * 10000) / 10000;
-        double rounded2 = Math.floor(side2 * 10000) / 10000;
-        double rounded3 = Math.floor(side3 * 10000) / 10000;
+    //     double rounded1 = Math.floor(side1 * 10000) / 10000;
+    //     double rounded2 = Math.floor(side2 * 10000) / 10000;
+    //     double rounded3 = Math.floor(side3 * 10000) / 10000;
 
-        if(rounded1 == rounded2 && rounded1 == rounded3){
-            return "equilateral";
-        }else if(rounded1 == rounded2 || rounded2 == rounded3 || rounded3 == rounded1){
-            return "isosceles";
+    //     if(rounded1 == rounded2 && rounded1 == rounded3 && rounded2 == rounded3){
+    //         return "equilateral";
+    //     }else if(rounded1 == rounded2 || rounded2 == rounded3 || rounded3 == rounded1){
+    //         return "isosceles";
+    //     }
+    //     return "scalene";
+    // }
+
+    public String classify() {
+        double a = Math.round(((v1.distanceTo(v2)) * 10000.0)/ 10000.0);
+        double b = Math.round(((v2.distanceTo(v3)) * 10000.0)/ 10000.0);
+        double c = Math.round(((v3.distanceTo(v1)) * 10000.0)/ 10000.0);
+        if (a == b || b == c || a == c) {
+          if (a == b && b == c){
+            return("equilateral");
+          }
+          return("isosceles");
         }
-        return "scalene";
+        return("scalene");
+      }
+
+    public String toString(){
+        return "v1(" + v1.getX() + ", " + v1.getY() + ") v2(" + v2.getX() + ", " + v2.getY() + ") v3(" + v3.getX() + ", " + v3.getY() + ")";
     }
 
-
+    public void setVertex(int index, Point newP){
+        if(index == 0){
+            v1 = newP;
+        }else if(index == 1){
+            v2 = newP;
+        }else if(index == 2){
+            v3 = newP;
+        }
+    }
 
 
 
@@ -60,6 +85,7 @@ public class Triangle{
         System.out.println(triangle1.getPerimeter());
         System.out.println(triangle1.getArea());
         System.out.println(triangle1.classify());
+        System.out.println(triangle1.toString());
     }
 
 }

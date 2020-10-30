@@ -24,8 +24,8 @@ public class Point{
     public double distanceTo(Point other) {
         double otherx = other.getX();
         double othery = other.getY();
-        double result = Math.sqrt(((otherx-x) * (otherx-x)) + ((othery-y) *
-        (othery-y)));
+        double result = Math.sqrt(((x-otherx) * (x-otherx)) + ((y-othery) *
+        (y-othery)));
         return(result);
       }
 
